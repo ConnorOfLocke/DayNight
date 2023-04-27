@@ -3,28 +3,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CRAB.Art
+namespace DayNight.Shaders
 {
-    public enum GlobalShaderValueType
-    {
-        Float,
-        Color
-    }
-
     [Serializable]
     public class ShaderValue
     {
+        #region Fields
+
         [SerializeField]
         private string propertyName = string.Empty;
         [SerializeField]
         private GlobalShaderValueType propertyType;
         [SerializeField]
         private AnimationCurve animationCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-
         [SerializeField]
         private List<float> shaderValues = null;
         [SerializeField]
         private List<Color> shaderColors = null;
+
+        #endregion
 
         public void SetBlendValue(float blendValue, int fromIndex, int toIndex)
         {
@@ -42,13 +39,23 @@ namespace CRAB.Art
                     break;
             }
         }
+
+        public enum GlobalShaderValueType
+        {
+            Float,
+            Color
+        }
     }
 
-    public class GlobalShaderController : LightingController
+    public class GlobalShaderController : DayNightController<int>
     {
+        #region Fields
+
         [Header("Settings")]
         [SerializeField]
         private List<ShaderValue> shaderValues = null;
+
+        #endregion
 
         public void Load()
         { }

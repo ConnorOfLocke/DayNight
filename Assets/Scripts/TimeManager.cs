@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections;
 using UnityEngine;
-using CRAB.Utils;
+using Utils;
 
-namespace CRAB.DayNight
+namespace DayNight
 {
     public class TimeManager : Singleton<TimeManager>
     {
@@ -15,11 +15,11 @@ namespace CRAB.DayNight
 
         //Usually these would be made ReadOnly with a cool plugin called NaughtyAttributes
         [Header("Debug")]
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private bool isPaused = false;
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private float timeElapsed = 0.0f;
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private float dayRatio = 0.0f;
 
         public float DayNightTransitionTime => timeConfig.DayNightTransitionTime;

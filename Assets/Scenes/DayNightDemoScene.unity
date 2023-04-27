@@ -390,18 +390,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendOffset: 0
-  nightIndex: 2
-  sunriseIndex: 3
-  dayIndex: 0
-  sunsetIndex: 1
   debugBlending: 0
   manualBlendValue: 0
+  day: {fileID: 14587216}
+  night: {fileID: 625961842}
+  sunrise: {fileID: 549099450}
+  sunset: {fileID: 248274120}
+  dayData: {fileID: 14587217}
+  nightData: {fileID: 625961843}
+  sunriseData: {fileID: 549099451}
+  sunsetData: {fileID: 248274121}
   mainLight: {fileID: 1957551541}
-  refLights:
-  - {fileID: 14587216}
-  - {fileID: 248274120}
-  - {fileID: 625961842}
-  - {fileID: 549099450}
   blendEnabled: 1
   blendRotation: 1
   blendAngularDiameter: 1
@@ -424,8 +423,6 @@ MonoBehaviour:
     blendBlockerSampleCount: 1
     blendFilterSampleCount: 1
     blendMinimumBlurIntensity: 1
-  lastFromIndex: 2
-  lastToIndex: 2
   localBlendValue: 0
 --- !u!1 &40170018
 GameObject:
@@ -1263,13 +1260,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508614244}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2917384, y: -4.7407904, z: 6.946382}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 2127829471}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &549099449
 GameObject:
@@ -1839,23 +1836,23 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 2127829471}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.2917384
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -3.7407904
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 6.946382
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1891,6 +1888,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
+--- !u!4 &939127672 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 0a070c1e0e2bb6448a368953b31b8abb, type: 3}
+  m_PrefabInstance: {fileID: 939127671}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1323752637
 GameObject:
   m_ObjectHideFlags: 0
@@ -2096,16 +2098,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blendOffset: 0
-  nightIndex: 0
-  sunriseIndex: 1
-  dayIndex: -1
-  sunsetIndex: 2
   debugBlending: 0
   manualBlendValue: 0
-  volumes:
-  - {fileID: 1990212999}
-  - {fileID: 915449060}
-  - {fileID: 40170019}
+  day: {fileID: 0}
+  night: {fileID: 1990212999}
+  sunrise: {fileID: 915449060}
+  sunset: {fileID: 40170019}
   lastFromIndex: 0
   lastToIndex: 0
   lastBlendValue: 0
@@ -2176,7 +2174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1805065409
 GameObject:
@@ -2273,7 +2271,7 @@ RectTransform:
   m_Children:
   - {fileID: 880231326}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -2687,3 +2685,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2005584591}
   m_CullTransparentMesh: 1
+--- !u!1 &2127829470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2127829471}
+  m_Layer: 0
+  m_Name: Environment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2127829471
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127829470}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.2917384, y: 4.7407904, z: -6.946382}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 939127672}
+  - {fileID: 508614248}
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

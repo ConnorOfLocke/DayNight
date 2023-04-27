@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DayNight;
 
-namespace CRAB.DayNight
+namespace DayNight
 {
     public class DebugCanvas : MonoBehaviour
     {

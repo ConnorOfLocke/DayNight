@@ -4,18 +4,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.HighDefinition;
-using CRAB.DayNight;
+using Utils;
+using DayNight;
 
-namespace CRAB.Art
+namespace DayNight.Lighting
 {
-    public class DirectionalLightingController : LightingController
+    public class DirectionalLightingController : DayNightController<Light, HDAdditionalLightData>
     {
+        #region Fields
+
         [Header("References")]
         [SerializeField]
         private Light mainLight = null;
-
-        [SerializeField]
-        private List<Light> refLights = new List<Light>();
 
         [Header("General Values")]
         [SerializeField]
@@ -37,14 +37,13 @@ namespace CRAB.Art
         private ShadowBlendSettings shadowBlendSettings = null;
 
         [Header("Debug")]
-        [SerializeField]
-        private int lastFromIndex = 0;
-        [SerializeField]
-        private int lastToIndex = 0;
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private float localBlendValue = 0.0f;
 
+        #endregion
+
         private HDAdditionalLightData mainLightData = null;
+
         private List<HDAdditionalLightData> refLightData = null;
 
         public void Load()
@@ -57,11 +56,13 @@ namespace CRAB.Art
             if (refLightData == null)
             {
                 refLightData = new List<HDAdditionalLightData>();
-                foreach (Light light in refLights)
-                {
-                    refLightData.Add(light.GetComponent<HDAdditionalLightData>());
-                }
+
+                dayData = day.GetComponent<HDAdditionalLightData>();
+                nightData = night.GetComponent<HDAdditionalLightData>();
+                sunriseData = sunrise.GetComponent<HDAdditionalLightData>();
+                sunsetData = sunset.GetComponent<HDAdditionalLightData>();
             }
+
             if (mainLightData == null)
             {
                 mainLightData = mainLight.GetComponent<HDAdditionalLightData>();
@@ -73,30 +74,31 @@ namespace CRAB.Art
         {
             Initialise();
 
-            GetSunriseSunsetInfo(blendValue, out float localBlendValue, out int fromIndex, out int toIndex);
+            GetSunriseSunsetInfo(blendValue, out float localBlendValue,
+                                out Light fromLight, out HDAdditionalLightData fromLightData,
+                                out Light toLight, out HDAdditionalLightData toLightData);
 
             if (blendEnabled)
             {
                 //Blend Rotation
                 if (blendRotation)
                 {
-                    mainLight.transform.rotation = Quaternion.Slerp(refLights[fromIndex].transform.rotation.normalized, refLights[toIndex].transform.rotation.normalized, localBlendValue);
+                    mainLight.transform.rotation = Quaternion.Slerp(fromLight.transform.rotation.normalized, toLight.transform.rotation.normalized, localBlendValue);
                 }
+
                 //Shape
                 if (blendAngularDiameter)
                 {
-                    mainLightData.angularDiameter = Mathf.Lerp(refLightData[fromIndex].angularDiameter, refLightData[toIndex].angularDiameter, localBlendValue);
+                    mainLightData.angularDiameter = Mathf.Lerp(fromLightData.angularDiameter, toLightData.angularDiameter, localBlendValue);
                 }
 
-                celestialBodyBlendSettings.Blend(mainLightData, refLightData[fromIndex], refLightData[toIndex], localBlendValue);
-                emmisionBlendSettings.Blend(mainLight, mainLightData, refLights[fromIndex], refLightData[fromIndex], refLights[toIndex], refLightData[toIndex], localBlendValue);
-                shadowBlendSettings.Blend(mainLightData, refLightData[fromIndex], refLightData[toIndex], localBlendValue);
+                celestialBodyBlendSettings.Blend(mainLightData, fromLightData, toLightData, localBlendValue);
+                emmisionBlendSettings.Blend(mainLight, mainLightData, fromLight, fromLightData, toLight, toLightData, localBlendValue);
+                shadowBlendSettings.Blend(mainLightData, fromLightData, toLightData, localBlendValue);
 
                 mainLightData.UpdateAllLightValues();
             }
 
-            lastFromIndex = fromIndex;
-            lastToIndex = toIndex;
             this.localBlendValue = localBlendValue;
         }
 

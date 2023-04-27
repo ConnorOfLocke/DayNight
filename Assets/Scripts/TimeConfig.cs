@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CRAB.DayNight
+namespace DayNight
 {
     [CreateAssetMenu(menuName = "Config/" + nameof(TimeConfig))]
     public class TimeConfig : ScriptableObject

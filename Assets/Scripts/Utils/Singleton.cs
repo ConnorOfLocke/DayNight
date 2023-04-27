@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CRAB.Utils
+namespace Utils
 {
     public abstract class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
