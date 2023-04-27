@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d48abeaf06a956747bc8058b37d93fb2, type: 3}
+  m_Name: TimeConfig
+  m_EditorClassIdentifier: 
+  TimeScale: 50
+  TimeBetweenTicks: 0.25
+  SecondsPerDay: 300
+  DaysPerSeason: 10
+  StartTimeOffset: 80
+  DayNightTransitionTime: 30
+  SunriseTime: 0.25
+  SunsetTime: 0.75
+  DayIcon: {fileID: 21300000, guid: 15e376bd666e80a46aed0ada7decc31e, type: 3}
+  NightIcon: {fileID: 21300000, guid: 81cd0d3e2ba7f0b4b9eecab43e1dedda, type: 3}
+  SummerIcon: {fileID: 21300000, guid: 282850b50b8fff34f8c7e2434e53e33e, type: 3}
+  AutumnIcon: {fileID: 21300000, guid: eae36b5e3e5e2fe4498baa89cba90549, type: 3}
+  WinterIcon: {fileID: 21300000, guid: ceddd37f74f7a5a418e6e92a7aba2bcc, type: 3}
+  SpringIcon: {fileID: 21300000, guid: d2bbc1e6361835944a4b9b5cfe4da026, type: 3}
